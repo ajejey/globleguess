@@ -6,10 +6,10 @@ const WS_URL = isProduction
   ? import.meta.env.VITE_WS_URL_PROD 
   : import.meta.env.VITE_WS_URL_DEV;
 
-console.log(`Connecting to WebSocket server: ${WS_URL}`);
+console.log(`Connecting to WebSocket server: ${import.meta.env.VITE_API_URL_PROD}`);
 
 // Create a socket connection to our backend server
-const socket = io(WS_URL, {
+const socket = io(import.meta.env.VITE_API_URL_PROD, {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,

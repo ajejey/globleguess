@@ -10,9 +10,7 @@ const { createGame, joinGame, makeGuess, handleReconnection } = require('./gameC
 // Configuration
 const PORT = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const FRONTEND_URL = NODE_ENV === 'production' 
-  ? process.env.FRONTEND_URL_PROD 
-  : process.env.FRONTEND_URL_DEV;
+const FRONTEND_URL = process.env.FRONTEND_URL_PROD;
 
 console.log(`Server running in ${NODE_ENV} mode`);
 console.log(`Frontend URL: ${FRONTEND_URL}`);
