@@ -8,7 +8,7 @@ const cors = require('cors');
 const { createGame, joinGame, makeGuess, handleReconnection } = require('./gameController');
 
 // Configuration
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const FRONTEND_URL = process.env.FRONTEND_URL_PROD;
 

@@ -52,15 +52,9 @@ const Game = () => {
     }
   }, [roomId, gameId, joinGame, error]);
   
-  // Redirect to home if room not found or game ended and refreshed
-  if (roomNotFound || (gameState === 'ended' && gameId !== roomId)) {
-    return <Navigate to="/" replace />;
-  }
-  
-  // Redirect to correct URL if game ID doesn't match URL
-  if (gameId && roomId && gameId !== roomId) {
-    return <Navigate to={`/game/${gameId}`} replace />;
-  }
+  // Check for redirect conditions after all hooks
+  const shouldRedirectHome = roomNotFound || (gameState === 'ended' && gameId !== roomId);
+  const shouldRedirectToGame = gameId && roomId && gameId !== roomId;
   
   // Filter countries based on search term
   useEffect(() => {
@@ -146,6 +140,15 @@ const Game = () => {
   const formatTimestamp = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
+
+  // Handle redirects
+  if (shouldRedirectHome) {
+    return <Navigate to="/" replace />;
+  }
+  
+  if (shouldRedirectToGame) {
+    return <Navigate to={`/game/${gameId}`} replace />;
+  }
 
   // Render game over state
   if (gameState === 'ended') {
