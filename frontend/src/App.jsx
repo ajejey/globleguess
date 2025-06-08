@@ -36,7 +36,7 @@ function AppRoutes() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsInitialLoad(false);
-    }, 1000);
+    }, 50);
     
     return () => clearTimeout(timer);
   }, []);

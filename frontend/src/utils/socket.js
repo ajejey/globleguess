@@ -1,7 +1,15 @@
 import { io } from 'socket.io-client';
 
+// Get environment variables
+const isProduction = import.meta.env.VITE_NODE_ENV === 'production';
+const WS_URL = isProduction 
+  ? import.meta.env.VITE_WS_URL_PROD 
+  : import.meta.env.VITE_WS_URL_DEV;
+
+console.log(`Connecting to WebSocket server: ${WS_URL}`);
+
 // Create a socket connection to our backend server
-const socket = io('http://localhost:3001', {
+const socket = io(WS_URL, {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,

@@ -1,8 +1,21 @@
+// Load environment variables from .env and .env.local
+require('dotenv').config();
+require('dotenv').config({ path: '.env.local', override: true });
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 const cors = require('cors');
 const { createGame, joinGame, makeGuess, handleReconnection } = require('./gameController');
+
+// Configuration
+const PORT = process.env.PORT || 3001;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const FRONTEND_URL = NODE_ENV === 'production' 
+  ? process.env.FRONTEND_URL_PROD 
+  : process.env.FRONTEND_URL_DEV;
+
+console.log(`Server running in ${NODE_ENV} mode`);
+console.log(`Frontend URL: ${FRONTEND_URL}`);
 
 // Helper function to ensure players have guesses array and guessCount
 function preparePlayersData(players) {
@@ -23,17 +36,22 @@ function preparePlayersData(players) {
 
 // Initialize Express app
 const app = express();
-app.use(cors({ origin: "*" }));
+// Enable CORS with specific origins
+const corsOptions = {
+  origin: [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:3000'],
+  methods: ["GET", "POST"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Create HTTP server and Socket.IO instance
 const server = http.createServer(app);
 const io = socketIO(server, {
-  cors: {
-    origin: ["http://localhost:5173", "http://localhost:3000"], // Allow both development ports
-    methods: ["GET", "POST"],
-    credentials: true
-  }
+  cors: corsOptions,
+  // Enable WebSocket transport
+  transports: ['websocket', 'polling']
 });
 
 // In-memory store for active games
@@ -399,7 +417,10 @@ app.get('/health', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`WebSocket server available at ws://localhost:${PORT}`);
+  if (NODE_ENV === 'production') {
+    console.log(`Production WebSocket URL: wss://globleguess-production.up.railway.app`);
+  }
 });

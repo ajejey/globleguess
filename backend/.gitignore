@@ -18,6 +18,7 @@ yarn-debug.log
 
 # dotenv environment variables file
 .env
+.env.example
 
 # Logs
 logs
