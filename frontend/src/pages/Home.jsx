@@ -83,6 +83,34 @@ const Home = () => {
           <p className="text-gray-700 mt-4 text-center">Welcome to Globle Guess Game, the ultimate online map quiz! Challenge yourself to identify countries around the world on our interactive 3D globe. Play with friends, join existing games, or start a new match to prove your geography prowess. It's a fun and educational experience for everyone who loves learning about the world. Are you ready to guess the country?</p>
         </motion.div>
 
+        {/* Main View - Choose to Create or Join (MOVED HERE) */}
+        {view === 'main' && (
+          <motion.div
+            className="space-y-4 mb-6" // Added mb-6 for spacing before How to Play
+            variants={itemVariants} // Added itemVariants for consistency
+          >
+            <motion.button
+              className="w-full flex items-center justify-center bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl"
+              onClick={() => setView('create')}
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <span className="mr-2 text-xl">🌍</span> Create New Game
+            </motion.button>
+
+            <motion.button
+              className="w-full flex items-center justify-center bg-gray-200 text-gray-800 py-3 px-4 rounded-lg hover:bg-gray-300 focus:ring-4 focus:ring-gray-300 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl"
+              onClick={() => setView('join')}
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <span className="mr-2 text-xl">🔍</span> Join Existing Game
+            </motion.button>
+          </motion.div>
+        )}
+
         {/* How to Play Section */}
         {view === 'main' && (
           <motion.div
@@ -101,46 +129,18 @@ const Home = () => {
 
         {/* Error Message */}
         {error && (
-          <motion.div 
-            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6 relative"
+          <motion.div
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6 relative" // mb-6 is fine here
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="block sm:inline">{error}</span>
-            <button 
+            <button
               onClick={clearError}
               className="absolute top-0 bottom-0 right-0 px-4 py-3"
             >
               <span className="text-xl">&times;</span>
             </button>
-          </motion.div>
-        )}
-
-        {/* Main View - Choose to Create or Join */}
-        {view === 'main' && (
-          <motion.div 
-            className="space-y-4"
-            // variants={containerVariants} // Already part of a container, this might not be needed or could be itemVariants
-          >
-            <motion.button
-              className="w-full flex items-center justify-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-500"
-              onClick={() => setView('create')}
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <span className="mr-2">🌍</span> Create New Game
-            </motion.button>
-            
-            <motion.button
-              className="w-full flex items-center justify-center bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 focus:ring focus:ring-gray-500"
-              onClick={() => setView('join')}
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <span className="mr-2">🔍</span> Join Existing Game
-            </motion.button>
           </motion.div>
         )}
 
@@ -279,7 +279,7 @@ const Home = () => {
           className="mt-12 text-center text-sm text-gray-500"
           variants={itemVariants}
         >
-          <p>Inspired by Globle.org • Built with React, Socket.IO & ❤️</p>
+          {/* Line removed as per request */}
         </motion.div>
       </motion.div>
     </div>
