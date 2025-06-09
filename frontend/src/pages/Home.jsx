@@ -77,10 +77,27 @@ const Home = () => {
           variants={itemVariants}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-2">
-            GuessTheCountry
+            Globle Guess Game
           </h1>
           <p className="text-gray-600">Test your geography knowledge in this multiplayer guessing game!</p>
+          <p className="text-gray-700 mt-4 text-center">Welcome to Globle Guess Game, the ultimate online map quiz! Challenge yourself to identify countries around the world on our interactive 3D globe. Play with friends, join existing games, or start a new match to prove your geography prowess. It's a fun and educational experience for everyone who loves learning about the world. Are you ready to guess the country?</p>
         </motion.div>
+
+        {/* How to Play Section */}
+        {view === 'main' && (
+          <motion.div
+            className="my-6 p-4 bg-white shadow-md rounded-lg"
+            variants={itemVariants} // You can use itemVariants or create new ones
+          >
+            <h2 className="text-2xl font-semibold text-blue-800 mb-3 text-center">How to Play Globle Guess Game</h2>
+            <p className="text-gray-700 mb-2">Globle Guess Game challenges you to test your geography knowledge by identifying countries on our interactive 3D globe.</p>
+            <p className="text-gray-700 mb-2"><strong>Starting a Game:</strong> Choose to 'Create New Game' to start your own geography quiz and invite friends, or 'Join Existing Game' with a game code.</p>
+            <p className="text-gray-700 mb-2"><strong>Making a Guess:</strong> Once in the game, you'll be prompted to guess the target country. Type your guess into the input field. The globe will then rotate to the guessed country, and its color will indicate how close you are to the secret target country.</p>
+            <p className="text-gray-700 mb-2"><strong>Understanding Proximity Colors:</strong> A GREEN color means you're very close or correct! Yellow and Orange indicate you're getting warmer. RED means you're far off. Use these color hints from the interactive map to refine your next guess in this exciting map game.</p>
+            <p className="text-gray-700 mb-2"><strong>Winning the Game:</strong> The goal is to guess the correct country in as few attempts as possible. Compete with others in multiplayer mode to see who is the ultimate geography whiz!</p>
+            <p className="text-gray-700"><strong>Learn as you play:</strong> Each guess in this educational game helps you learn more about world geography.</p>
+          </motion.div>
+        )}
 
         {/* Error Message */}
         {error && (
@@ -103,7 +120,7 @@ const Home = () => {
         {view === 'main' && (
           <motion.div 
             className="space-y-4"
-            variants={containerVariants}
+            // variants={containerVariants} // Already part of a container, this might not be needed or could be itemVariants
           >
             <motion.button
               className="w-full flex items-center justify-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-500"

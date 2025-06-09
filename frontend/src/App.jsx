@@ -4,6 +4,10 @@ import { useGame } from './context/GameContext';
 import { GameProvider } from './context/GameContext';
 import Home from './pages/Home';
 import Game from './pages/Game';
+import Header from './components/Header'; // Import Header
+import Footer from './components/Footer'; // Import Footer
+import BlogListPage from './pages/blog/BlogListPage'; // Import Blog List Page
+import BlogPostPage from './pages/blog/BlogPostPage'; // Import Blog Post Page
 import './index.css';
 
 // Main App Component with Game Context
@@ -11,7 +15,13 @@ function App() {
   return (
     <BrowserRouter>
       <GameProvider>
-        <AppRoutes />
+        <div className="flex flex-col min-h-screen bg-gray-50"> {/* Flex container for sticky footer and main bg */}
+          <Header />
+          <main className="flex-grow container mx-auto px-4 py-8"> {/* Main content area takes available space */}
+            <AppRoutes />
+          </main>
+          <Footer />
+        </div>
       </GameProvider>
     </BrowserRouter>
   );
@@ -51,6 +61,10 @@ function AppRoutes() {
       {/* Home route */}
       <Route path="/" element={<Home />} />
       
+      {/* Blog routes */}
+      <Route path="/blog" element={<BlogListPage />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
+
       {/* Game route with room ID parameter */}
       <Route 
         path="/game/:roomId" 
@@ -63,7 +77,8 @@ function AppRoutes() {
         } 
       />
       
-      {/* Redirect to game room if already in a game */}
+      {/* Redirect to game room if already in a game, otherwise to home */}
+      {/* This catch-all should generally be last */}
       <Route 
         path="*" 
         element={
@@ -71,6 +86,8 @@ function AppRoutes() {
             <Navigate to={`/game/${gameId}`} replace />
           ) : (
             <Navigate to="/" replace />
+            // Consider a dedicated 404 page here instead of always redirecting to home
+            // e.g., <Navigate to="/404" replace /> or <NotFoundPage />
           )
         } 
       />
