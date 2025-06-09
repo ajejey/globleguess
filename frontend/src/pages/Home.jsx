@@ -4,11 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
 
 const Home = () => {
-  const { createGame, joinGame, isLoading, error, clearError, gameId: activeGameId } = useGame();
+  const { createGame, joinGame, isLoading, error, clearError, gameId: activeGameId, clearActiveGameSession } = useGame();
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [gameId, setGameId] = useState('');
   const [view, setView] = useState('main'); // main, create, join
+
+  // Effect to clear any active game session when returning to Home
+  useEffect(() => {
+    clearActiveGameSession();
+  }, []); // Ensure this runs only once on mount
 
   // Effect to navigate to game page when game ID is available
   useEffect(() => {
