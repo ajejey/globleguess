@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import socket from '../utils/socket';
-import { saveGameData, saveGuesses, saveGameState, getGameData, getGuesses, getGameState } from '../utils/localStorage';
+import { saveGameData, saveGuesses, saveGameState, getGameData, getGuesses, getGameState, clearAllGameData } from '../utils/localStorage';
 
 // Create the context
 const GameContext = createContext();
@@ -323,6 +323,22 @@ export const GameProvider = ({ children }) => {
     setError(null);
   }, []);
 
+  // Clear active game session
+  const clearActiveGameSession = useCallback(() => {
+    setGameId('');
+    setPlayerId('');
+    setPlayerName('');
+    setGameState('initial');
+    setIsHost(false);
+    setPlayers([]);
+    setGuesses([]);
+    setTargetCountry(null);
+    setWinner(null);
+    setError(null);
+    setIsLoading(false);
+    clearAllGameData();
+  }, []);
+
   // Context value
   const value = {
     // State
@@ -345,6 +361,7 @@ export const GameProvider = ({ children }) => {
     makeGuess,
     leaveGame,
     clearError,
+    clearActiveGameSession,
   };
 
   return (
