@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
 import { GlobeAltIcon, PlayIcon, UserGroupIcon, InformationCircleIcon, CheckCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import Globe from '../components/Globe';
@@ -58,19 +58,20 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-100 via-indigo-100 to-purple-200 text-slate-800 flex flex-col font-sans">
       {/* Header */}
-      <motion.header 
-        className="py-2 px-4 sm:px-8 shadow-lg bg-white/90 backdrop-blur-lg sticky top-0 z-50"
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center">
-            <GlobeAltIcon className="h-8 w-8 mr-2 text-indigo-600" />GlobleGuess
-          </h1>
-          {/* Optional: Navigation links if any */}
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <Link to="/" className="text-2xl font-bold text-indigo-600 flex items-center">
+            <GlobeAltIcon className="h-8 w-8 mr-2" />
+            GlobleGuess
+          </Link>
+          <nav className="hidden md:flex space-x-6">
+            <Link to="/" className="text-slate-600 hover:text-indigo-600 transition-colors">Home</Link>
+            <Link to="/about" className="text-slate-600 hover:text-indigo-600 transition-colors">About</Link>
+            <Link to="/contact" className="text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
+            <Link to="/faq" className="text-indigo-600 font-medium">FAQ</Link>
+          </nav>
         </div>
-      </motion.header>
+      </header>
 
       {/* Main Content Area */}
       <main className="flex-grow container mx-auto p-4 sm:p-8 flex items-center justify-center">
@@ -204,9 +205,11 @@ const Home = () => {
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors bg-white"
                     disabled={isLoading}
                   >
-                    <option value="Easy">Easy Peasy</option>
-                    <option value="Normal">Normal Navigator</option>
-                    <option value="Hard">Hardcore Cartographer</option>
+                    <option value="Novice">Novice</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Hard">Hard</option>
+                    <option value="Impossible">Impossible</option>
                   </select>
                 </motion.div>
                 <motion.div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-2" variants={itemVariants}>
@@ -296,20 +299,46 @@ const Home = () => {
 
       {/* Footer */}
       <motion.footer 
-        className="py-4 px-4 sm:px-8 text-center bg-slate-800 text-slate-300 mt-12"
+        className="py-6 px-4 sm:px-8 text-center bg-slate-800 text-slate-300 mt-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
         <div className="container mx-auto">
           <p className="mb-2 text-lg">
-            <span role="img" aria-label="globe" className="mr-1">🌍</span> GlobleGuess &copy; {new Date().getFullYear()} • Test Your World Knowledge!
+            <span role="img" aria-label="globe" className="mr-1">🌍</span> GlobleGuess &copy; {new Date().getFullYear()}
           </p>
-          <p className="text-sm mb-1">
-            Inspired by awesome geography games like Globle & Wordle.
+          <p className="text-sm mb-2">
+            Test Your World Knowledge! • Inspired by awesome geography games like Globle & Wordle.
           </p>
-          <p className="text-sm mt-2">
-            Made by <a href="https://www.linkedin.com/in/ajey-nagarkatti-28273856/" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-400 transition-colors">Ajey Nagarkatti</a>
+          <div className="flex justify-center space-x-6 text-xs mt-4">
+            <a 
+              href="/privacy-policy" 
+              className="text-slate-400 hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </a>
+            <span className="text-slate-600">•</span>
+            <a 
+              href="/terms-conditions" 
+              className="text-slate-400 hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms & Conditions
+            </a>
+          </div>
+          <p className="text-xs text-slate-500 mt-4">
+            Made with ❤️ by <a 
+              href="https://www.linkedin.com/in/ajey-nagarkatti-28273856/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-indigo-300 hover:text-indigo-400 transition-colors"
+            >
+              Ajey Nagarkatti
+            </a>
           </p>
         </div>
       </motion.footer>

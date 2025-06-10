@@ -1,0 +1,25 @@
+# Allow all web crawlers to access all parts of the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://globleguess.vercel.app/sitemap.xml
+
+# Disallow crawling of admin or sensitive areas (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
+
+# Google AdsBot specific rules
+User-agent: AdsBot-Google
+Allow: /
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /*.svg$
+
+# Block AI crawlers (optional, uncomment if desired)
+# User-agent: GPTBot
+# Disallow: /

@@ -4,6 +4,9 @@ import { useGame } from './context/GameContext';
 import { GameProvider } from './context/GameContext';
 import Home from './pages/Home';
 import Game from './pages/Game';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import FAQ from './pages/FAQ';
 import './index.css';
 
 // Main App Component with Game Context
@@ -51,6 +54,11 @@ function AppRoutes() {
       {/* Home route */}
       <Route path="/" element={<Home />} />
       
+      {/* Information pages */}
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/faq" element={<FAQ />} />
+      
       {/* Game route with room ID parameter */}
       <Route 
         path="/game/:roomId" 
@@ -63,7 +71,23 @@ function AppRoutes() {
         } 
       />
       
-      {/* Redirect to game room if already in a game */}
+      {/* Static pages */}
+      <Route path="/privacy-policy" element={
+        <iframe 
+          src="/privacy-policy.html" 
+          className="w-full h-screen border-0" 
+          title="Privacy Policy"
+        />
+      } />
+      <Route path="/terms-conditions" element={
+        <iframe 
+          src="/terms-conditions.html" 
+          className="w-full h-screen border-0" 
+          title="Terms and Conditions"
+        />
+      } />
+      
+      {/* Redirect to game room if already in a game, otherwise to home */}
       <Route 
         path="*" 
         element={
