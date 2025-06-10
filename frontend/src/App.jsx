@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useGame } from './context/GameContext';
 import { GameProvider } from './context/GameContext';
@@ -29,22 +29,22 @@ function LoadingScreen() {
 
 // App Routes with proper URL-based navigation
 function AppRoutes() {
-  const { gameState, gameId, isLoading, leaveGame } = useGame();
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const { gameState, gameId, isLoading } = useGame();
+  // const [isInitialLoad, setIsInitialLoad] = useState(true);
   
-  // Handle initial loading state
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsInitialLoad(false);
-    }, 50);
+  // // Handle initial loading state
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsInitialLoad(false);
+  //   }, 50);
     
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
   
-  // Show loading screen during initial load
-  if (isInitialLoad) {
-    return <LoadingScreen />;
-  }
+  // // Show loading screen during initial load
+  // if (isInitialLoad) {
+  //   return <LoadingScreen />;
+  // }
   
   return (
     <Routes>

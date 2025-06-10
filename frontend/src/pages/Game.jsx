@@ -290,55 +290,10 @@ return (
     </motion.div>
 
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* Left Column - Player List */}
-      <motion.div variants={itemVariants} className="lg:col-span-1">
-        <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-bold mb-4">Players</h2>
-
-          <div className="space-y-3">
-            {players.map((player) => (
-              <div
-                key={player.id}
-                className={`flex items-center justify-between p-3 rounded-lg border ${
-                  player.name === playerName
-                    ? 'border-blue-800 bg-blue-50'
-                    : 'border-gray-200'
-                }`}
-              >
-                <div className="flex items-center">
-                  <span className="font-medium">{player.name}</span>
-                  {isHost && player.isHost && (
-                    <span className="ml-2 text-xs bg-blue-800 text-white px-2 py-0.5 rounded-full">
-                      Host
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <span className="text-sm text-gray-600 mr-2">
-                    {player.guessCount || (player.guesses && player.guesses.length) || 0} 
-                    {player.guessCount === 1 || (player.guesses && player.guesses.length === 1) ? 'guess' : 'guesses'}
-                  </span>
-
-                  {player.lastProximity !== undefined && (
-                    <div
-                      className={`w-3 h-3 rounded-full ${getProximityColor(
-                        player.lastProximity
-                      )}`}
-                      title={`Proximity: ${player.lastProximity} km`}
-                    ></div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Middle Column - Globe Visualization */}
-      <motion.div variants={itemVariants} className="lg:col-span-1">
+      {/* Left Column - Globe Visualization (larger) */}
+      <motion.div variants={itemVariants} className="lg:col-span-2">
         <div className="bg-white p-4 rounded shadow flex flex-col items-center justify-center h-full">
-          <div className="w-full h-64 mb-4">
+          <div className="w-full h-[600px] mb-4">
             {/* Import and use the Globe component */}
             <React.Suspense
               fallback={
@@ -415,6 +370,51 @@ return (
               ))}
             </div>
           )}
+        </div>
+      </motion.div>
+      
+      {/* Bottom Row - Player List */}
+      <motion.div variants={itemVariants} className="lg:col-span-3">
+        <div className="bg-white p-4 rounded shadow">
+          <h2 className="text-xl font-bold mb-4">Players</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {players.map((player) => (
+              <div
+                key={player.id}
+                className={`flex items-center justify-between p-3 rounded-lg border ${
+                  player.name === playerName
+                    ? 'border-blue-800 bg-blue-50'
+                    : 'border-gray-200'
+                }`}
+              >
+                <div className="flex items-center">
+                  <span className="font-medium">{player.name}</span>
+                  {isHost && player.isHost && (
+                    <span className="ml-2 text-xs bg-blue-800 text-white px-2 py-0.5 rounded-full">
+                      Host
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center">
+                  <span className="text-sm text-gray-600 mr-2">
+                    {player.guessCount || (player.guesses && player.guesses.length) || 0} 
+                    {player.guessCount === 1 || (player.guesses && player.guesses.length === 1) ? 'guess' : 'guesses'}
+                  </span>
+
+                  {player.lastProximity !== undefined && (
+                    <div
+                      className={`w-3 h-3 rounded-full ${getProximityColor(
+                        player.lastProximity
+                      )}`}
+                      title={`Proximity: ${player.lastProximity} km`}
+                    ></div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
