@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import socket from '../utils/socket';
 import { saveGameData, saveGuesses, saveGameState, getGameData, getGuesses, getGameState, clearAllGameData } from '../utils/localStorage';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 
 // Create the context
 const GameContext = createContext();
@@ -16,6 +17,7 @@ export const useGame = () => {
 
 // Game provider component
 export const GameProvider = ({ children }) => {
+  const navigate = useNavigate();
   // Player state
   const [playerName, setPlayerName] = useState('');
   const [playerId, setPlayerId] = useState('');
@@ -231,10 +233,13 @@ export const GameProvider = ({ children }) => {
   }, [gameId, playerId, playerName, guesses]);
 
   // Create a new game
-  const createGame = useCallback((name) => {
+  const createGame = useCallback((name, gameSettings) => {
     setPlayerName(name);
     setIsLoading(true);
-    socket.emit('create_game', { playerName: name, settings: {} }, (response) => {
+    socket.emit('create_game', {
+        playerName: name,
+        settings: gameSettings || { difficulty: 'Normal' } // Pass gameSettings, default if not provided
+    }, (response) => {
       // This callback will be called by the server if successful
       if (!response || !response.success) {
         setError('Failed to create game');
@@ -316,6 +321,8 @@ export const GameProvider = ({ children }) => {
     localStorage.removeItem('gameData');
     localStorage.removeItem(`guesses_${gameId}`);
     localStorage.removeItem(`gameState_${gameId}`);
+    // route to home using react-router-dom
+    navigate('/')
   }, [gameId, playerId]);
 
   // Clear error
