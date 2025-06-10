@@ -8,6 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [gameId, setGameId] = useState('');
+  const [difficulty, setDifficulty] = useState('Normal'); // Default to Normal
   const [view, setView] = useState('main'); // main, create, join
 
   // Effect to clear any active game session when returning to Home
@@ -26,7 +27,7 @@ const Home = () => {
     e.preventDefault();
     if (name.trim()) {
       if (view === 'create') {
-        createGame(name);
+        createGame(name, { difficulty: difficulty }); // Pass name and settings object with difficulty
       } else if (view === 'join' && gameId.trim()) {
         joinGame(name, gameId);
       }
@@ -153,6 +154,25 @@ const Home = () => {
                 disabled={isLoading}
                 required
               />
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <label htmlFor="difficulty" className="block text-sm font-medium text-gray-700 mb-1">
+                Difficulty Level
+              </label>
+              <select
+                id="difficulty"
+                value={difficulty}
+                onChange={(e) => setDifficulty(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-500"
+                disabled={isLoading}
+              >
+                <option value="Novice">Novice</option>
+                <option value="Easy">Easy</option>
+                <option value="Normal">Normal</option>
+                <option value="Hard">Hard</option>
+                <option value="Impossible">Impossible</option>
+              </select>
             </motion.div>
             
             <motion.div className="flex space-x-3" variants={itemVariants}>

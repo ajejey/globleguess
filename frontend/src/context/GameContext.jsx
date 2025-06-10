@@ -231,10 +231,13 @@ export const GameProvider = ({ children }) => {
   }, [gameId, playerId, playerName, guesses]);
 
   // Create a new game
-  const createGame = useCallback((name) => {
+  const createGame = useCallback((name, gameSettings) => {
     setPlayerName(name);
     setIsLoading(true);
-    socket.emit('create_game', { playerName: name, settings: {} }, (response) => {
+    socket.emit('create_game', {
+        playerName: name,
+        settings: gameSettings || { difficulty: 'Normal' } // Pass gameSettings, default if not provided
+    }, (response) => {
       // This callback will be called by the server if successful
       if (!response || !response.success) {
         setError('Failed to create game');

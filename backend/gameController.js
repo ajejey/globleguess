@@ -15,6 +15,7 @@ class Game {
       timeLimit: settings.timeLimit || 0, // 0 means no time limit
       maxGuesses: settings.maxGuesses || 0, // 0 means unlimited guesses
       targetCountry: settings.targetCountry || null, // Will be randomly selected if not provided
+      difficulty: settings.difficulty || 'Normal', // Add this line
       ...settings
     };
     this.players = {
@@ -47,10 +48,18 @@ class Game {
     this.status = 'playing';
     this.startTime = Date.now();
     
-    // If no target country was specified, select a random country
+    // If no target country was specified, select one based on difficulty
     if (!this.settings.targetCountry) {
-      const randomCountry = countryUtils.getRandomCountry();
-      this.settings.targetCountry = randomCountry.code;
+      const allCountries = countryUtils.getAllCountries(); // Get all countries
+      const selectedCountry = countryUtils.selectCountryByDifficulty(this.settings.difficulty, allCountries);
+      if (selectedCountry) {
+        this.settings.targetCountry = selectedCountry.code;
+      } else {
+        // Fallback if selection somehow fails (should be handled in selectCountryByDifficulty, but good to be safe)
+        console.error("Failed to select country by difficulty, falling back to random.");
+        const randomCountry = countryUtils.getRandomCountry(); // Existing fallback
+        this.settings.targetCountry = randomCountry.code;
+      }
     }
     
     return { success: true };
