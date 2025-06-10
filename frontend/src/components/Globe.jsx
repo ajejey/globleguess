@@ -135,7 +135,7 @@ const Earth = ({ guesses = [], isAnimating, setIsAnimating }) => {
       if (country) {
         // Add a marker at the country center for better visibility
         const { lat, lng } = country;
-        const position = latLngToVector3(lat, lng, 2.05); // Slightly above earth surface
+        const position = latLngToVector3(lat, lng, 3.05); // Slightly above earth surface
         
         const geometry = new THREE.SphereGeometry(0.05, 16, 16);
         const material = new THREE.MeshBasicMaterial({ 
@@ -200,7 +200,7 @@ const Earth = ({ guesses = [], isAnimating, setIsAnimating }) => {
     // Convert each coordinate to a 3D point on the globe
     coordinates.forEach(coord => {
       const [lng, lat] = coord;
-      const point = latLngToVector3(lat, lng, 2.02); // Slightly above earth surface
+      const point = latLngToVector3(lat, lng, 3.02); // Slightly above earth surface
       points.push(point);
     });
     
@@ -222,7 +222,7 @@ const Earth = ({ guesses = [], isAnimating, setIsAnimating }) => {
 
   return (
     <mesh ref={earthRef}>
-      <sphereGeometry args={[2, 64, 64]} />
+      <sphereGeometry args={[3, 64, 64]} />
       <meshStandardMaterial />
     </mesh>
   );
@@ -234,7 +234,7 @@ const Globe = ({ guesses = [] }) => {
   
   return (
     <div className="w-full h-full min-h-[300px]">
-      <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+      <Canvas camera={{ position: [0, 0, 9], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <Earth 
@@ -245,8 +245,8 @@ const Globe = ({ guesses = [] }) => {
         <OrbitControls 
           enableZoom={true} 
           enablePan={false}
-          minDistance={4}
-          maxDistance={10}
+          minDistance={6}
+          maxDistance={15}
           rotateSpeed={0.5}
           autoRotate={false}
           enableRotate={!isAnimating} // Disable user rotation during animation
