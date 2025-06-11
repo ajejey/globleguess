@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
 import { GlobeAltIcon, PlayIcon, UserGroupIcon, InformationCircleIcon, CheckCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import Globe from '../components/Globe';
+import Header from '../components/Header';
 
 const Home = () => {
   const { createGame, joinGame, isLoading, error, clearError, gameId: activeGameId, clearActiveGameSession } = useGame();
@@ -57,21 +58,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-100 via-indigo-100 to-purple-200 text-slate-800 flex flex-col font-sans">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-indigo-600 flex items-center">
-            <GlobeAltIcon className="h-8 w-8 mr-2" />
-            GlobleGuess
-          </Link>
-          <nav className="hidden md:flex space-x-6">
-            <Link to="/" className="text-slate-600 hover:text-indigo-600 transition-colors">Home</Link>
-            <Link to="/about" className="text-slate-600 hover:text-indigo-600 transition-colors">About</Link>
-            <Link to="/contact" className="text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
-            <Link to="/faq" className="text-indigo-600 font-medium">FAQ</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content Area */}
       <main className="flex-grow container mx-auto p-4 sm:p-8 flex items-center justify-center">

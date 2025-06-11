@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronDownIcon, ChevronUpIcon, GlobeAltIcon, UserGroupIcon, TrophyIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+import Header from '../components/Header';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -68,21 +69,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-indigo-50 text-slate-800">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-indigo-600 flex items-center">
-            <GlobeAltIcon className="h-8 w-8 mr-2" />
-            GlobleGuess
-          </Link>
-          <nav className="hidden md:flex space-x-6">
-            <Link to="/" className="text-slate-600 hover:text-indigo-600 transition-colors">Home</Link>
-            <Link to="/about" className="text-slate-600 hover:text-indigo-600 transition-colors">About</Link>
-            <Link to="/contact" className="text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
-            <Link to="/faq" className="text-indigo-600 font-medium">FAQ</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
