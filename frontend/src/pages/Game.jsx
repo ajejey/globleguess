@@ -354,14 +354,14 @@ return (
             <p className="text-gray-500 italic">No guesses yet. Start guessing!</p>
           ) : (
             <div className="space-y-2">
-              {guesses.map((guess, index) => (
+              {[...guesses].reverse().map((guess, index) => (
                 <div
                   key={index}
                   className={`p-3 rounded-lg ${getProximityColor(
                     guess.proximity
                   )} text-white flex justify-between items-center`}
                 >
-                  <span>{guess.country}</span>
+                  <span>{getCountryName(guess.country)}</span>
                   <span className="text-sm font-medium">
                     {getProximityText(guess.proximity)}
                     {guess.proximity > 0 && ` (${guess.proximity} km)`}
