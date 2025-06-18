@@ -36,13 +36,13 @@ const Home = () => {
   };
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+    hidden: { opacity: 1 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0 } },
     exit: { opacity: 0, transition: { duration: 0.3 } }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 0, opacity: 1 },
     visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, duration: 0.5 } }
   };
 
@@ -52,7 +52,7 @@ const Home = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
+    hidden: { opacity: 1, scale: 1 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } }
   };
 
@@ -287,9 +287,9 @@ const Home = () => {
       {/* Footer */}
       <motion.footer 
         className="py-6 px-4 sm:px-8 text-center bg-slate-800 text-slate-300 mt-12"
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto">
           <p className="mb-2 text-lg">
