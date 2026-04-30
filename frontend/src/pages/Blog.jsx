@@ -7,73 +7,73 @@ const Blog = () => {
   const blogPostsData = [
     {
       id: 1,
-      title: "The Meteoric Rise of Indie Games: Innovation and Passion",
-      summary: "Explore the boom of indie games, driven by innovation and passion.",
-      link: "/blog/the-rise-of-indie-games",
-      date: "October 26, 2023"
+      title: "How Many Countries In The World 2026?",
+      summary: "Discover the current count of sovereign states and territories in 2026 and how they are defined.",
+      link: "/blog/how-many-countries-in-the-world-2026",
+      date: "April 18, 2024"
     },
     {
       id: 2,
-      title: "More Than Just Fun: The Cognitive Benefits of Puzzle Games",
-      summary: "Discover how puzzle games can sharpen your mind and boost cognitive skills.",
-      link: "/blog/cognitive-benefits-of-puzzle-games",
-      date: "November 02, 2023"
+      title: "Largest Country By Population 2026",
+      summary: "Exploring the historic shift as India becomes the world's most populous nation in 2026.",
+      link: "/blog/largest-country-by-population-2026",
+      date: "April 25, 2024"
     },
     {
       id: 3,
-      title: "Connecting Through Play: The Enduring Joy of Multiplayer Games",
-      summary: "Learn about the social benefits and diverse experiences of multiplayer gaming.",
-      link: "/blog/joy-of-multiplayer-games",
-      date: "November 09, 2023"
+      title: "Smallest Country In The World: Area and Population",
+      summary: "A deep dive into Vatican City and other microstates that defy their tiny geographical footprint.",
+      link: "/blog/smallest-country-in-the-world",
+      date: "May 02, 2024"
     },
     {
       id: 4,
-      title: "Level Up Your Learning: How Gamification is Revolutionizing Education",
-      summary: "See how game mechanics are making education more engaging and effective.",
-      link: "/blog/gamification-in-education",
-      date: "November 16, 2023"
+      title: "Longest River In The World: Nile vs Amazon",
+      summary: "Settling the age-old debate between the world's two greatest aquatic giants and their true lengths.",
+      link: "/blog/longest-river-in-the-world",
+      date: "May 09, 2024"
     },
     {
       id: 5,
-      title: "Beyond the Pixels: Why Good Game Design Matters",
-      summary: "Understand the key elements of game design that create compelling experiences.",
-      link: "/blog/importance-of-game-design",
-      date: "November 23, 2023"
+      title: "Newest Country In The World",
+      summary: "The story of South Sudan and the challenges of the world's youngest sovereign nation.",
+      link: "/blog/newest-country-in-the-world",
+      date: "May 16, 2024"
     },
     {
       id: 6,
-      title: "Press Start to Continue: The Powerful Pull of Nostalgia in Gaming",
-      summary: "Delve into the world of retro gaming and the appeal of nostalgic classics.",
-      link: "/blog/nostalgia-in-gaming",
-      date: "November 30, 2023"
+      title: "Hardest Geography Trivia Questions and Answers",
+      summary: "Test your global knowledge with the most challenging geography puzzles designed for experts.",
+      link: "/blog/hardest-geography-trivia-questions",
+      date: "May 23, 2024"
     },
     {
       id: 7,
-      title: "Think Fast! How Games Improve Your Decision-Making Skills",
-      summary: "Find out how playing games can help you make quicker, better decisions.",
-      link: "/blog/games-and-decision-making-skills",
-      date: "December 07, 2023"
+      title: "Country With Most Islands In The World",
+      summary: "Why Sweden holds the record with over 267,000 islands and the science behind the count.",
+      link: "/blog/country-with-most-islands-in-the-world",
+      date: "May 30, 2024"
     },
     {
       id: 8,
-      title: "More Than Just a High Score: The Social Bonds Forged in Online Games",
-      summary: "Explore the community and social connections built through online gaming.",
-      link: "/blog/social-bonds-in-online-games",
-      date: "December 14, 2023"
+      title: "Largest Desert In The World",
+      summary: "Why Antarctica is technically the world's largest desert and other mind-blowing arid facts.",
+      link: "/blog/largest-desert-in-the-world",
+      date: "June 06, 2024"
     },
     {
       id: 9,
-      title: "Gaming for Everyone: The Growing Importance of Accessibility in Game Development",
-      summary: "Learn about the efforts to make gaming inclusive for all players.",
-      link: "/blog/accessibility-in-game-development",
-      date: "December 21, 2023"
+      title: "Largest Continent In The World",
+      summary: "Exploring the sheer scale, diversity, and economic dominance of Asia in the modern era.",
+      link: "/blog/largest-continent-in-the-world",
+      date: "June 13, 2024"
     },
     {
       id: 10,
-      title: "The World in Your Pocket: Exploring the Future of Mobile Gaming",
-      summary: "Get a glimpse into the latest trends and future possibilities of mobile gaming.",
-      link: "/blog/future-of-mobile-gaming",
-      date: "December 28, 2023"
+      title: "Tallest Mountain In The World",
+      summary: "Beyond Everest: Exploring the different ways we measure Earth's most impressive peaks.",
+      link: "/blog/tallest-mountain-in-the-world",
+      date: "June 20, 2024"
     },
     {
       id: 11,
@@ -109,6 +109,76 @@ const Blog = () => {
       summary: "Journey to some of the most awe-inspiring natural landscapes our planet has to offer.",
       link: "/blog/breathtaking-natural-landscapes",
       date: "February 01, 2024"
+    },
+    {
+      id: 16,
+      title: "Recognizing Countries by Shape: A Masterclass in Visual Geography",
+      summary: "Learn how to identify nations by their silhouettes and master the art of visual geography recognition.",
+      link: "/blog/recognizing-countries-by-shape",
+      date: "February 08, 2024"
+    },
+    {
+      id: 17,
+      title: "The Microstate Phenomenon: Exploring the World's 10 Smallest Sovereign Nations",
+      summary: "Discover the fascinating histories and unique challenges faced by the planet's smallest independent states.",
+      link: "/blog/microstate-phenomenon",
+      date: "February 15, 2024"
+    },
+    {
+      id: 18,
+      title: "Capital Ambiguity: Why Some Countries Have Two or More Capital Cities",
+      summary: "Explore the administrative, historical, and political reasons behind nations with multiple capital cities.",
+      link: "/blog/capital-ambiguity",
+      date: "February 22, 2024"
+    },
+    {
+      id: 19,
+      title: "The Name Game: Recent Country Name Changes and the History Behind Them",
+      summary: "A look at countries that have recently changed their official names and the cultural shifts they represent.",
+      link: "/blog/name-game-country-changes",
+      date: "February 29, 2024"
+    },
+    {
+      id: 20,
+      title: "Remote Realities: Identifying the World's Most Isolated Islands",
+      summary: "Journey to the most remote and hard-to-reach islands on Earth, where geography defines everything.",
+      link: "/blog/remote-realities-isolated-islands",
+      date: "March 07, 2024"
+    },
+    {
+      id: 21,
+      title: "Global Extremes: A Journey to the Highest and Lowest Points on Earth",
+      summary: "Explore the geographical extremes of our planet, from the peaks of Everest to the depths of the Dead Sea.",
+      link: "/blog/global-extremes-points",
+      date: "March 14, 2024"
+    },
+    {
+      id: 22,
+      title: "The International Date Line: Understanding Time's Most Confusing Boundary",
+      summary: "Unravel the mysteries of the zig-zagging line that separates today from tomorrow in the middle of the Pacific.",
+      link: "/blog/international-date-line",
+      date: "March 21, 2024"
+    },
+    {
+      id: 23,
+      title: "Fortified Frontiers: The History and Impact of the World's Most Dangerous Borders",
+      summary: "A deep dive into the most militarized and fortified international boundaries and their global significance.",
+      link: "/blog/fortified-frontiers-dangerous-borders",
+      date: "March 28, 2024"
+    },
+    {
+      id: 24,
+      title: "Geography Geek's Handbook: 50 Incredible World Facts for Your Next Trivia Night",
+      summary: "A collection of mind-blowing geography facts to sharpen your knowledge and impress your friends.",
+      link: "/blog/geography-geeks-handbook",
+      date: "April 04, 2024"
+    },
+    {
+      id: 25,
+      title: "Shifting Sands: How World Borders Have Evolved in the 21st Century",
+      summary: "Explore how the world map has been rewritten in the last two decades through diplomacy and conflict.",
+      link: "/blog/shifting-sands-evolving-borders",
+      date: "April 11, 2024"
     }
   ];
 

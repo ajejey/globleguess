@@ -1,4 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
+
+@theme {
+  --color-parchment: #faf8f5;
+  --color-parchment-dark: #f0ebe3;
+  --color-navy: #0f172a;
+  --color-navy-light: #1e293b;
+  --color-forest: #047857;
+  --color-forest-light: #059669;
+  --color-terracotta: #c2410c;
+  --color-terracotta-light: #ea580c;
+  --color-gold: #d97706;
+  --color-gold-light: #f59e0b;
+  --color-sage: #65a30d;
+  --color-ink: #1e293b;
+  --color-ink-light: #334155;
+  --color-cream: #fffdf8;
+  --color-map-border: #d6cfc2;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
 
